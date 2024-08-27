@@ -73,6 +73,47 @@ pii = 3.141592;  // error
     - const는 컴파일 시 들어가기 때문에 선언할 때 값을 할당해야 함.
 
 ## 2. Data Types
+### 2-1. Basic
+- `String`, `int`, `double`, `bool`, `num`
+- 전부 클래스.
+- int, double은 num을 상속받음.
+
+### 2-2. Lists
+```
+List<String> members = ["Nina", "Momoka", "Subaru", "Tomo", "Rupa"];
+var members1 = ["Nina", "Momoka", "Subaru", "Tomo", "Rupa"];  // 위의 코드와 같음.
+```
+- var 쓰면 자동으로 인식함.
+
+```
+var isBeniShoga = true;
+var members = [
+    "Nina",
+    "Momoka",
+    "Subaru",
+    if(isBeniShoga) "Tomo", "Rupa"
+];
+```
+- Collection if
+
+```
+var shinKawasaki = ["Nina", "Momoka", "Subaru"];
+var togetoge = [
+    for(var member in shinKawasaki) "⛩$member",
+    "🍚Tomo", "🍚Rupa"
+];
+```
+- Collection for
+
+### 2-3. String
+```
+var familyName = "Iseri";
+var fullName = "Nina $familyName";  // ${familyName} 도 가능
+
+var age = 17;
+var introduce = "Hi, I'm ${age + 1} years old.";  // $age + 1는 불가
+```
+- 단순히 변수 참조 시 {} 생략 가능.
 
 ## 3. Functions
 
