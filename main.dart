@@ -1,51 +1,35 @@
 class Player {
     final String name;
-    int xp, age;
+    int xp;
     String team;
-
-    Player({
-        required this.name,
-        required this.xp,
-        required this.team,
-        required this.age
-    });
-
-    Player.createTTPlayer({
-        required String name,
-        required int age
-    }): this.age = age,
-        this.name = name,
-        this.team = "Togenashi Togeari",
-        this.xp = 0;
-
-    Player.createDDPlayer(String name, int age):
-        this.age = age,
-        this.name = name,
-        this.team = "Diamond Dust",
-        this.xp = 0;
+    
+    Player({required this.name, required this.xp, required this.team});
 
     void sayHello() {
-        print("Hi my name is $name($age) from $team");
+        print("Hi my name is $name");
     }
 }
 
-String sayHello({
-    required String name,
-    int time = 100
-}) {
-    return "Hey $name, your guitar would be hetakuso even $time years later";
+class Band {
+    final String name;
+    Band({required this.name});
+    void introduce() {
+        print("We're $name");
+    }
+}
+
+class Toge extends Band {
+    final List<String> members;
+    Toge({
+        required String name,
+        required this.members
+    }): super(name: name);
+    @override
+    void introduce(){
+        super.introduce();
+        print("Members: $members");
+    }
 }
 
 void main() {
-    print(sayHello(
-        name: "Nina"
-    ));
-
-    var player = Player.createTTPlayer(
-        name: "Nina",
-        age: 17
-    );
-    var player1 = Player.createDDPlayer("Hina", 17);
-    player.sayHello();
-    player1.sayHello();
 }

@@ -213,3 +213,174 @@ typedef Togetoge = List<String>;
 - 간단한 자료형만 사용 가능. -> 왜 필요한거야.
 
 ## 4. Classes
+### 4-1. Defining a class
+```
+class Toge {
+    final String name = "Nina";
+    int age = 17;
+
+    void sayHello() {
+        print("$name: Watashitachiwa eto.. Togenashi Togeari desu!");
+    }
+}
+
+void main() {
+    var toge = Toge();
+    print(toge.name);
+    toge.age = 18;  // no error
+    toge.name = "Momoka";  // error
+}
+```
+- 인스턴스 생성 시 new 키워드 안 붙혀도 됨.
+- class method 내에서 웬만해선 this 키워드 사용 x.
+
+### 4-2. Constructors
+```
+class Toge {
+    final String name;  // error
+    -> late final String name;
+    int age;  // error
+    -> late int age;
+
+    Toge(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+```
+- 이 방법 대신에,
+
+```
+class Toge {
+    final String name;
+    int age;
+
+    Toge(this.name, this.age);
+}
+```
+- 훨씬 간결함. 대신에 이것도 positional parameter임.
+
+### 4-3. Named Constructor Parameters
+```
+class Toge {
+    final String name;
+    int age, xp;
+    String position;
+
+    Toge({
+        required this.name,
+        required this.age,
+        this.xp = 0,
+        required this.position
+    });
+}
+```
+- 마찬가지로 기본값을 주거나, required를 붙이거나.
+
+### 4-4. Named Constructor
+```
+class Toge {
+    // 위와 동일
+
+    Toge.createTogenashi({
+        required String name,
+        required int age
+    }): this.name = name,
+        this.age = age,
+        this.xp = 100,
+        this.position = "Togenashi";
+
+    Toge.createTogeari(String name, int age):
+        this.name = name,
+        this.age = age,
+        this.xp = 0,
+        this.position = "Togeari";
+}
+```
+- 생성자 선언의 다른 방식.
+- 콜론 : 을 붙여야하는 것과, : 이후에 세미콜론 ;이 아니라 콤마 ,로 구분하고 마지막에 세미콜론 ;임을 유의.
+- API에서 데이터 가져와서 인스턴스로 변환할 때 유용.
+    ```
+    Toge.fromJson(Map<String, dynamic> json):
+        name = json['name'],
+        age = json['age'],
+        xp = json['xp'],
+        position = json['position'];
+    ```
+    - 이런식으로.
+
+### 4-5. Casacde Notation
+```
+var nina = Toge(name: "Nina", age: 17, position: "Vocal");
+nina.name = "Iseri";  // error: final
+nina.age = 18;
+nina.position = "Guitar";
+
+// 위와 같은 코드
+var nina1 = Toge(name: "Nina", age: 17, position: "Vocal")
+..age = 18
+..position = "Guitar";
+```
+- 앞에 클래스, 인스턴스가 있으면 .. 이 그것을 가리킴.
+- 세미콜론 ; 이 없어야됨에 유의.
+
+### 4-6. Enums
+```
+enum Band {Vocal, Guitar, Bass, Drum, Piano}
+
+...
+
+var nina = Toge(name: "Nina", age: 17, position: Band.Vocal);
+```
+- 개발자의 실수를 줄여줌.
+- 예를 들어, position: Giutar라고 줄 수 있으나, enum 사용하면 Band. 에서 선택지가 나뉨.
+
+### 4-7. Abstract Classes
+```
+abstract class Band {
+    void perform(String stage);
+    void resign(String name);
+}
+
+class Toge extends Band {
+    void perform(String stage) {
+        print("Perform at $stage");
+    }
+
+    void resign(String name) {
+        print("$name yameru Bando");
+    }
+}
+```
+- 다른 언어랑 같음.
+
+### 4-8. Inheritance
+```
+class Band {
+    final String name;
+    Band({required this.name});
+    void introduce() {
+        print("We're $name");
+    }
+}
+
+class Toge extends Band {
+    final List<String> members;
+    Toge({
+        required String name,
+        required this.members
+    }): super(name: name);
+    @override
+    void introduce(){
+        super.introduce();
+        print("Members: $members");
+    }
+}
+```
+- 다른 언어의 상속과 비슷. super 사용에 유의.
+
+
+### 4-9. Mixins
+```
+```
+- 
