@@ -81,7 +81,7 @@ pii = 3.141592;  // error
 ### 2-2. Lists
 ```
 List<String> members = ["Nina", "Momoka", "Subaru", "Tomo", "Rupa"];
-var members1 = ["Nina", "Momoka", "Subaru", "Tomo", "Rupa"];  // 위의 코드와 같음.
+var members1 = ["Nina", "Momoka", "Subaru", "Tomo", "Rupa"];  // 위의 코드와 같음
 ```
 - var 쓰면 자동으로 인식함.
 
@@ -114,6 +114,29 @@ var age = 17;
 var introduce = "Hi, I'm ${age + 1} years old.";  // $age + 1는 불가
 ```
 - 단순히 변수 참조 시 {} 생략 가능.
+
+### 2-4. Maps
+```
+Map<String, String> nina1 = {
+    'name': 'Nina',
+    'age': '17',
+    'guitar': 'hetakuso'
+};
+
+var nina = {
+    'name': 'Nina',
+    'age': 17,
+    'guitar': false
+};
+```
+- JavaScript의 Object, Python의 Dictinoary와 비슷.
+
+### 2-5. Sets
+```
+Set<String> members = {"Nina", "Momoka", "Subaru", "Tomo", "Rupa"};
+var members1 = {"Nina", "Momoka", "Subaru", "Tomo", "Rupa"};  // 위의 코드와 같음
+```
+- 다른 언어의 Set과 같이 중복값 허용안함.
 
 ## 3. Functions
 
