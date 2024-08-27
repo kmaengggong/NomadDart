@@ -127,7 +127,7 @@ var nina = {
     'name': 'Nina',
     'age': 17,
     'guitar': false
-};
+};  // Map<String, Object> 와 같음.
 ```
 - JavaScript의 Object, Python의 Dictinoary와 비슷.
 
@@ -139,5 +139,77 @@ var members1 = {"Nina", "Momoka", "Subaru", "Tomo", "Rupa"};  // 위의 코드�
 - 다른 언어의 Set과 같이 중복값 허용안함.
 
 ## 3. Functions
+### 3-1. Defining a function(Positional Parameters)
+```
+void sayHello(String name) {
+    print("Hey $name, your guitar is hetakuso");
+}
+
+// fat arrow syntax
+void sayHello1(String name) => print("Hey $name, your guitar is hetakuso");
+```
+- `리턴값 함수명(파라미터)`
+
+### 3-2. Named Parameters
+```
+String sayHello({
+    required String name,
+    int time = 100
+}) {
+    return "Hey $name, your guitar would be hetakuso even $time years later";
+}
+
+void main() {
+    print(sayHello(
+        name: "Nina"
+    ));
+}
+```
+- 함수 파라미터 선언에 중괄호 {}을 붙이고
+- null값 때문에 앞에 required를 붙여서 무조건 받게 하거나,
+- 혹은 기본값을 선언해주면 해당 파라미터를 안 받아도 됨.
+
+### 3-3. Optional Positional Parameters
+```
+String sayHello(String name, [int? time = 100]) => "Hey $name, your guitar would be hetakuso even $time years later";
+```
+- Named Parameters를 사용하지 않고 Positional Parameters를 사용하고 싶을 때, 파라미터를 안 받아도 되는 방법.
+- 대괄호 [] 붙이고 타입에 ?. 그리고 기본값 할당. 왤케 복잡해.
+
+### 3-4. QQ Operator
+```
+String getStrongName(String? name){
+    if(name != null){
+        return name.toUpperCase();
+    }
+    return "Nameless Name";
+}
+```
+- 이 방법 대신에,
+
+```
+String getStrongName(String? name) => name != null ? name.toUpperCase() : "Nameless Name";
+```
+- 이 방법 대신에,
+
+```
+String getStrongName(String? name) => name?.toUpperCase() ?? "Nameless Name";
+```
+- 좌항이 null이 아니면 좌항을 리턴, 좌항이 null이면 우항을 리턴.
+
+```
+String? name;
+name ??= "Momoka";  // null이기 때문에 할당
+name ??= "Diamond Dust";  // null이 아니기 때문에 할당 x
+```
+- QQ equals || QQ assignment operator
+
+### 3-5. Typedef
+```
+typedef Togetoge = List<String>;
+```
+- alias.
+- List\<String> 쓸 자리에 typedef로 선언한 타입 사용 가능.
+- 간단한 자료형만 사용 가능. -> 왜 필요한거야.
 
 ## 4. Classes

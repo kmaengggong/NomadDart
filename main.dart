@@ -29,7 +29,18 @@ class Player {
     }
 }
 
+String sayHello({
+    required String name,
+    int time = 100
+}) {
+    return "Hey $name, your guitar would be hetakuso even $time years later";
+}
+
 void main() {
+    print(sayHello(
+        name: "Nina"
+    ));
+
     var player = Player.createTTPlayer(
         name: "Nina",
         age: 17
