@@ -4,7 +4,7 @@
 ### 0-1. Info
 - Dart는 JIT(Just-in-Time)와 AOT(Ahead-of-Time) 방식 둘다 사용.
 - JIT: 개발 중에는 JIT 사용. Dart VM(가상 머신)에서 돌아감. 수정 사항 즉시 반영.
-- AOT: 개발 후 앱 배포 시 AOT 사용. 컴파일 후 바이너리 파일 생성
+- AOT: 개발 후 앱 배포 시 AOT 사용. 컴파일 후 바이너리 파일 생성.
 
 ## 1. Variables
 ### 1-1. var
@@ -49,7 +49,7 @@ name = "Rupa";  // error
 final String name1;
 name1 = "Rupa";  // no error
 ```
-- 자바스크립트의 const와 비슷
+- 자바스크립트의 const와 비슷.
 
 ### 1-5. late
 ```
@@ -171,7 +171,7 @@ void main() {
     ));
 }
 ```
-- 함수 파라미터 선언에 중괄호 {}을 붙이고
+- 함수 파라미터 선언에 중괄호 {}을 붙이고,
 - null값 때문에 앞에 required를 붙여서 무조건 받게 하거나,
 - 혹은 기본값을 선언해주면 해당 파라미터를 안 받아도 됨.
 
