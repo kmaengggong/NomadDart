@@ -1,4 +1,10 @@
-# NomadDart
+# NomadDart [24.08.27]
+
+## 0. Dart
+### 0-1. Info
+- Dart는 JIT(Just-in-Time)와 AOT(Ahead-of-Time) 방식 둘다 사용.
+- JIT: 개발 중에는 JIT 사용. Dart VM(가상 머신)에서 돌아감. 수정 사항 즉시 반영.
+- AOT: 개발 후 앱 배포 시 AOT 사용. 컴파일 후 바이너리 파일 생성
 
 ## 1. Variables
 ### 1-1. var
@@ -382,5 +388,20 @@ class Toge extends Band {
 
 ### 4-9. Mixins
 ```
+class Exp {
+    final double exp = 0.0;
+}
+
+class Perform {
+    void perform() {
+        print("Perform at Budokan");
+    }
+}
+
+class Band with Exp, Perform {
+    final String name;
+    Band({required this.name});
+}
 ```
-- 
+- extends 자리에 with 키워드 사용. 다른 클래스의 필드, 메서드를 그대로 가져와서 씀.
+- with으로 가져올 클래스에는 `생성자`가 없는 클래스여야 함.
